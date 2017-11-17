@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-11-1 2:44:52 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.company.dao.pojo.ShoppingCart" table="T_SHOPPINGCART">
+        <id name="sid" type="int">
+            <column name="SID" />
+            <generator class="native" />
+        </id>
+        <property name="gid" type="int">
+            <column name="GID" />
+        </property>
+        <property name="uid" type="int">
+            <column name="UID" />
+        </property>
+        <property name="adddate" type="date">
+            <column name="ADDDATE" />
+        </property>
+        
+        <property name="checkbox" type="int">
+            <column name="CHECKBOX" />
+        </property>
+    </class>
+</hibernate-mapping>

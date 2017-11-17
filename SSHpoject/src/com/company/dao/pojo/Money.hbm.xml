@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-11-1 18:47:21 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.company.dao.pojo.Money" table="T_MONEY">
+        <id name="uid" type="int">
+            <column name="UID" />
+            <generator class="assigned" />
+        </id>
+        <property name="bankcard" type="java.math.BigInteger">
+            <column name="BANKCARD" />
+        </property>
+        <property name="balance" type="double">
+            <column name="BALANCE" />
+        </property>
+        <property name="receive1" type="java.lang.String">
+            <column name="RECEIVE1" />
+        </property>
+        <property name="receive2" type="java.lang.String">
+            <column name="RECEIVE2" />
+        </property>
+        <property name="receive3" type="java.lang.String">
+            <column name="RECEIVE3" />
+        </property>
+    </class>
+</hibernate-mapping>

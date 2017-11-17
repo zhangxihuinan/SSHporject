@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+
+	<!-- 1-设定自动扫描组件的base package包 -->
+	<context:component-scan base-package="com.company"></context:component-scan>
+	
+	<!-- 2-读取c3p0db.properties的信息，生成数据源连接池dataSource -->
+	<context:property-placeholder location="classpath:c3p0db.properties"/>
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+		<property name="driverClass" value="${connection.driverClass}"></property>
+		<property name="jdbcUrl" value="${connection.url}"></property>
+		<property name="user" value="${connection.username}"></property>
+		<property name="password" value="${connection.password}"></property>
+		<property name="minPoolSize" value="${c3p0.min_size}"></property>
+		<property name="maxPoolSize" value="${c3p0.max_size}"></property>
+		<property name="acquireIncrement" value="${c3p0.acquire_increment}"></property>
+		<property name="checkoutTimeout" value="${c3p0.timeout}"></property>
+		<property name="idleConnectionTestPeriod" value="${c3p0.idle_test_period}"></property>
+		<property name="maxStatements" value="${c3p0.max_statements}"></property>
+	</bean>
+	
+	<!-- 3-依赖dataSource，生成sessionFactory -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource" ref="dataSource"></property>
+		<property name="configLocation" value="classpath:hibernate.cfg.xml"></property>
+		<property name="mappingLocations" value="classpath:com/company/dao/pojo/*.hbm.xml"></property>
+	</bean>
+	
+	<!-- 4-应用Spring的AOP特性，完成对事务管理器的配置（应用注解方式Transactional） -->
+	
+	<bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	
+	<tx:annotation-driven transaction-manager="transactionManager"/>
+	
+</beans>

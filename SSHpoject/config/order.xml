@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<package name="order_package" namespace="/" extends="struts2_demo">
+		<action name="add_order" class="orderAction"
+			method="addOrder">
+			<result name="success" type="redirectAction">goods_findallpage</result>
+			<result name="error" type="redirectAction">findAll_usershoppingcart?balanceError=balanceError</result>
+		</action>
+		
+		<action name="list_order" class="orderAction"
+			method="listOrder">
+			<result name="success" type="dispatcher">/WEB-INF/views/list_order.jsp</result>
+		</action>
+		
+		<action name="user_order_center" class="orderAction"
+			method="userOrderCenter">
+			<result name="success" type="dispatcher">/WEB-INF/views/order_center.jsp</result>
+		</action>
+		
+		<action name="user_order_findbyorderdate" class="orderAction"
+			method="userOrderfindByOrderDate">
+			<result name="success" type="dispatcher">/WEB-INF/views/user_order_findbyOrderdate.jsp</result>
+		</action>
+		
+		
+	
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-10-31 19:34:30 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.company.dao.pojo.Detail" table="T_DETAIL">
+        <id name="uid" type="int">
+            <column name="UID" />
+            <generator class="native" />
+        </id>
+        <property name="realname" type="java.lang.String">
+            <column name="REALNAME" />
+        </property>
+        <property name="sex" type="java.lang.String">
+            <column name="SEX" />
+        </property>
+        <property name="phone" type="int">
+            <column name="PHONE" />
+        </property>
+        <property name="sqlbirthday" type="java.lang.String">
+            <column name="BIRTHDAY" />
+        </property>
+        <property name="filePath" type="java.lang.String">
+            <column name="FILEPATH" />
+        </property>
+    </class>
+</hibernate-mapping>

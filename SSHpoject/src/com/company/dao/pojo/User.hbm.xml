@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-10-31 19:09:53 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.company.dao.pojo.User" table="T_USER">
+        <id name="uid" type="int">
+            <column name="UID" />
+            <generator class="native" />
+        </id>
+        <property name="username" type="java.lang.String">
+            <column name="USERNAME" />
+        </property>
+        <property name="password" type="java.lang.String">
+            <column name="PASSWORD" />
+        </property>
+        <property name="priority" type="java.lang.String">
+            <column name="PRIORITY" default="0"/>
+        </property>
+        <property name="adddate" type="java.lang.String">
+            <column name="ADDDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

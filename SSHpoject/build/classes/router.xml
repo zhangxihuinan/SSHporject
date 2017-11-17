@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 路由单元 -->
+	<package name="router_package" namespace="/" extends="struts-default">
+		<action name="router_reg">
+			<result>/WEB-INF/views/userRegistry.jsp</result>
+		</action>
+		<action name="router_save">
+			<result>/WEB-INF/views/emp_save.jsp</result>
+		</action>
+		<action name="router_report">
+			<result>/WEB-INF/views/report.html</result>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

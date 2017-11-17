@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>报表页面</title>
+		<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+		<style>
+			* {
+				margin: 10px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<button id="reportBtn" class="btn btn-success">获取报表</button>
+
+		<table class="table table-hover" style="display: none;width: 200px;">
+			<caption>
+				17年11月份男性用户购买商品类型为书籍并且单价超过20RMB的商品名称
+			</caption>
+			<thead>
+				<tr>
+					<th>商品及总价</th>
+				</tr>
+			</thead>
+			<tbody id="content">
+			</tbody>
+		</table>
+
+		<script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+		<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script>
+			$(function() {
+				$("#reportBtn").click(function() {
+					$("#content").empty();
+					$("table").show(1000);
+					$.ajax({
+						url: "http://localhost:8080/SSHpoject/report.action",
+						type: "GET",
+						asynch: true,
+						dataType:"json",
+						success: function(data) {
+							for(var i=0;i<data.length;i++) {
+								var emp = data[i];
+								//1-创建tr节点
+								$tr = $(document.createElement("tr"));
+								//2-创建td节点
+								$td = $(document.createElement("td"));
+								//3-向tr节点添加
+								$td.text(emp);
+								$tr.append($td);
+								//4-向#content添加tr节点
+								$("#content").append($tr);
+							}
+						}
+					});
+				});
+			});
+		</script>
+	</body>
+
+</html>

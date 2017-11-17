@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- C层的功能3：反馈及跳转 -->
+	<package name="struts2_demo" namespace="/" extends="struts-default">
+
+		<global-results>
+			<result name="error" type="redirect">/error.jsp</result>
+		</global-results>
+	</package>
+	
+	<include file="goods.xml"></include>
+	<include file="user.xml"></include>
+	<include file="router.xml"></include>
+	<include file="order.xml"></include>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2017-11-1 18:14:51 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.company.dao.pojo.Order" table="T_ORDER">
+        <id name="oid" type="int">
+            <column name="OID" />
+            <generator class="native" />
+        </id>
+        <property name="gid" type="int">
+            <column name="GID" />
+        </property>
+        <property name="orderdate" type="java.lang.String">
+            <column name="ORDERDATE" />
+        </property>
+        <property name="uid" type="int">
+            <column name="UID" />
+        </property>
+        <property name="quantity" type="int">
+            <column name="QUANTITY" />
+        </property>
+        <property name="allcount" type="double">
+            <column name="ALLCOUNT" />
+        </property>
+        <property name="receive" type="java.lang.String">
+            <column name="RECEIVE" />
+        </property>
+    </class>
+</hibernate-mapping>

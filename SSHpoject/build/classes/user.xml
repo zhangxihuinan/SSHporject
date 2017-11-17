@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+
+	<package name="user_package" namespace="/" extends="struts2_demo">
+
+		<!-- 用户的登录和注册 -->
+		<action name="user_registry" class="userAction"
+			method="registry">
+			<result name="success" type="redirect">loginUser.jsp</result>
+		</action>
+		
+		<action name="user_login" class="userAction"
+			method="login">
+			<result name="success" type="redirectAction">goods_findallpage</result>
+			<result name="error" type="redirectAction">user_login_error</result>
+		</action>
+		
+		<action name="user_login_error" class="userAction" 
+			method="loginError">
+			<result name="success" type="dispatcher">loginUser.jsp</result>
+		</action>
+		
+		<action name="user_center" class="userAction" 
+			method="userCenter">
+			<result name="success" type="dispatcher">/WEB-INF/views/user_center.jsp</result>
+		</action>
+		
+		<action name="user_center_update" class="userAction" 
+			method="userCenterUpdate">
+			<result name="success" type="redirectAction">user_center</result>
+		</action>
+		
+		<action name="user_out" class="userAction" 
+			method="userOut">
+			<result name="success" type="redirect">loginUser.jsp</result>
+		</action>
+	
+		<action name="money_center" class="userAction" 
+			method="moneyCenter">
+			<result name="success" type="dispatcher">/WEB-INF/views/money_center.jsp</result>
+		</action>
+	
+	
+		<action name="report" class="userAction" method="report"></action>
+		
+	
+	
+	
+	</package>
+	
+	
+	
+	
+	<!-- 全局变量 struts.custom.i18n.resources,value值设置为csdn -->
+	<constant name="struts.custom.i18n.resources" value="upload"></constant>
+	<package name="upload_demo" namespace="/" extends="struts2_demo">
+		<action name="user_upload" class="uploadAction">
+			<result name="success" type="redirectAction">user_center</result>
+			<result name="input">/error.jsp</result>
+			<!-- 配置拦截器限制上传文件的大小和类型 -->
+			<interceptor-ref name="fileUpload">
+				<param name="allowedTypes">image/jpeg,image/jpg,image/png,image/gif,image/bmp</param>
+				<param name="maximumSize">200*1024</param><!-- 最大是2M，也可写成 -->
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack"></interceptor-ref>
+		</action>
+	</package>
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

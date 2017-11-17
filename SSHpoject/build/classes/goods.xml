@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- C层的功能3：反馈及跳转 -->
+	<package name="goods_all" namespace="/" extends="struts2_demo">
+		<action name="goods_findallpage" class="goodsAction" method="findAllPage">
+			<result name="success" type="dispatcher">/WEB-INF/views/goods_list.jsp</result>
+		</action>
+		
+		<action name="goods_findbynamepage" class="goodsAction" method="findByNmaePage">
+			<result name="success" type="dispatcher">/WEB-INF/views/goods_list.jsp</result>
+		</action>
+		
+		<action name="goods_findbygtypepage" class="goodsAction" method="findByGtypePage">
+			<result name="success" type="dispatcher">/WEB-INF/views/goods_list.jsp</result>
+		</action>
+		
+		<action name="add_shoppingcart" class="goodsAction" method="addShoppingcart">
+			<result name="success" type="redirectAction">goods_findallpage?pageBegin=${pageBegin}</result>
+		</action>
+		<action name="findAll_usershoppingcart" class="goodsAction" method="findAllShoppingcart">
+			<result name="success" type="dispatcher">/WEB-INF/views/user_shoppingcart.jsp</result>
+		</action>
+		
+		
+		<action name="delete_goods_shoppingcart" class="goodsAction" method="deleteGoodsShoppingcart">
+		<result name="success" type="redirectAction">findAll_usershoppingcart</result>
+		</action>
+		
+		<action name="add_usershoppingcart_checked" class="goodsAction" method="addChecked">
+		</action>
+		
+	</package>
+
+</struts>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
